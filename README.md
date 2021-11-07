@@ -3,14 +3,15 @@
 ## Configurações
 * Versões utilizadas/testadas: Java 8 e 15
 * Banco de dados utilizado: PostgreSQL 10
+* Porta utilizada: 8082
 * Ferramentas utilizadas: STS 4.9.0, DBeaver 7.3.5, Postman 9.1.3
 * Endereço OpenAPI/Swagger: http://localhost:8082/swagger-ui/#/
 * Script de criação do Banco de Dados encontra-se ao fim do deste README.md
 
 ## Observações
 * Poderia ter feito uso do Flyway para realizar a migração de dados, mas optei por uma abordagem mais simplificada para criação das tabelas e alimentação inicial de dados
-* Não achei necessária a criação de endpoints de busca de Pauta/Associado/Sessao/Voto e, por esse motivo, optei por retornar somente o "HttpStatus Created", sem o endpoint de busca correspondente
-* Optei pelo uso de queries naturais para resolver muitas das consultas, pois é o padrão utilizado em meu trabalho atual. Criteria também poderia ter sido utilizada, mas demandaria um pouco mais de tempo
+* Não achei necessária a criação de endpoints de busca por ids de Pauta/Associado/Sessao/Voto e, por esse motivo, optei por retornar somente o "HttpStatus Created", sem o endpoint de busca correspondente (Uri)
+* Optei pelo uso de queries naturais para resolver muitas das consultas, pois é o padrão utilizado em meu trabalho atual. JPA Criteria também poderia ter sido utilizada, mas demandaria um pouco mais de tempo
 * Considerei que um Pauta só poderia ter uma Sessao
 
 ## Script de Banco de Dados
