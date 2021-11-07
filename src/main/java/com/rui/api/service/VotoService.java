@@ -37,6 +37,10 @@ public class VotoService {
 	public void salvar(Voto voto) {
 		SessaoVotacao sessao = this.sessaoVotacaoService.buscarPorPauta(voto.getPauta());
 		
+		if (sessao == null) {
+			throw new NegocioException("O voto não pode ser computado pois não há sessão cadastrada");
+		}
+		
 		if (!sessao.getAberta()) {
 			throw new NegocioException("O voto não pode ser computado pois a sessão da pauta está fechada para votação");
 		}
