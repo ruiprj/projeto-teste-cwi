@@ -1,7 +1,7 @@
 # Desafio Técnico Java | CWI Software - Rui Reis Jr
 
 ## Configurações
-* Versões utilizadas e testadas: Java 8 e 15
+* Versões utilizadas/testadas: Java 8 e 15
 * Banco de dados utilizado: PostgreSQL 10
 * Ferramentas utilizadas: STS 4.9.0, DBeaver 7.3.5, Postman 9.1.3
 * Endereço OpenAPI/Swagger: http://localhost:8082/swagger-ui/#/
@@ -14,19 +14,21 @@
 * Considerei que um Pauta só poderia ter uma Sessao
 
 ## Script de Banco de Dados
+* Nome da Database: cwi
+
 ```sql
 CREATE DATABASE cwi;
 
 CREATE TABLE public.pauta (
-	id serial NOT NULL,
+	id bigserial NOT NULL,
 	descricao text NOT NULL,
 	data date NOT NULL,
 	CONSTRAINT pauta_pkey PRIMARY KEY (id)
 );
 
 CREATE TABLE public.sessao_votacao (
-	id serial NOT NULL,
-	pauta_id int8 NOT NULL,
+	id bigserial NOT NULL,
+	pauta_id bigint NOT NULL,
 	aberta boolean,
 	tempo_de_abertura_em_segundos int8,
 	CONSTRAINT sessao_votacao_pkey PRIMARY KEY (id),
@@ -34,16 +36,16 @@ CREATE TABLE public.sessao_votacao (
 );
 
 CREATE TABLE public.associado (
-	id serial NOT NULL,
+	id bigserial NOT NULL,
 	nome text NOT NULL,
 	cpf text NOT NULL,
 	CONSTRAINT associado_pkey PRIMARY KEY (id)
 );
 
 CREATE TABLE public.voto (
-	id serial NOT NULL,
-	pauta_id int8 NOT NULL,
-	associado_id int8 NOT NULL,
+	id bigserial NOT NULL,
+	pauta_id bigint NOT NULL,
+	associado_id bigint NOT NULL,
 	opcao text NOT NULL,
 	CONSTRAINT voto_pkey PRIMARY KEY (id),
 	CONSTRAINT pauta_fkey_2 FOREIGN KEY (pauta_id) REFERENCES public.pauta(id),
@@ -60,5 +62,5 @@ INSERT INTO public.associado (nome, cpf) VALUES('Kiko', '74702829041');
 INSERT INTO public.associado (nome, cpf) VALUES('Doutor Chapatin', '65324328065');
 INSERT INTO public.associado (nome, cpf) VALUES('Tripa Seca', '33818254028');
 INSERT INTO public.associado (nome, cpf) VALUES('Quase Nada', '09993832057');
-INSERT INTO public.associado (nome, cpf) VALUES('Poucas Trancas', '12312312300'); // CPF inválido propositalmente
+INSERT INTO public.associado (nome, cpf) VALUES('Poucas Trancas', '12312312300'); -- CPF inválido propositalmente
 ```
