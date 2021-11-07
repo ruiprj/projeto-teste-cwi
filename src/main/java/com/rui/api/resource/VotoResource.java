@@ -16,7 +16,9 @@ import com.rui.api.model.Voto;
 import com.rui.api.service.VotoService;
 
 import io.swagger.annotations.ApiOperation;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 @RestController
 @RequestMapping("/cwi/voto")
 public class VotoResource {
@@ -28,12 +30,16 @@ public class VotoResource {
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
 	public void criar(@RequestBody Voto voto) {
+		log.info("Criando voto...");
+		
 		this.service.salvar(voto);
 	}
 	
 	@ApiOperation("Listar total de votos por id da pauta")
 	@GetMapping("totais-por-pauta/{pautaId}")
 	public ResponseEntity<VotosComputadosDTO> listarTodos(@PathVariable Long pautaId) {
+		log.info("Listando votos por pauta...");
+		
 		VotosComputadosDTO votosComputados = this.service.totalDeVotosPorPauta(pautaId);
 		
 		return ResponseEntity.ok().body(votosComputados);

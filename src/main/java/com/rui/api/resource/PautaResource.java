@@ -16,7 +16,9 @@ import com.rui.api.model.Pauta;
 import com.rui.api.service.PautaService;
 
 import io.swagger.annotations.ApiOperation;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 @RestController
 @RequestMapping("/cwi/pauta")
 public class PautaResource {
@@ -30,6 +32,8 @@ public class PautaResource {
 	@ApiOperation("Listar todas as pautas")
 	@GetMapping("todos")
 	public ResponseEntity<List<Pauta>> listarTodos() {
+		log.info("Listando pautas...");
+		
 		List<Pauta> lista = this.service.listarTodos();
 		
 		return ResponseEntity.ok().body(lista);
@@ -39,6 +43,8 @@ public class PautaResource {
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
 	public void criar(@RequestBody Pauta pauta) {
+		log.info("Criando pautas...");
+		
 		this.service.salvar(pauta);
 	}
 	

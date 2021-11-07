@@ -12,7 +12,9 @@ import com.rui.api.model.Associado;
 import com.rui.api.service.AssociadoService;
 
 import io.swagger.annotations.ApiOperation;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 @RestController
 @RequestMapping("/cwi/associado")
 public class AssociadoResource {
@@ -24,6 +26,8 @@ public class AssociadoResource {
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
 	public void criar(@RequestBody Associado associado) {
+		log.info("Criando associado...");
+		
 		this.service.salvar(associado);
 	}
 

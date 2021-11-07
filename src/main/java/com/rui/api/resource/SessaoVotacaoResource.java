@@ -12,7 +12,9 @@ import com.rui.api.model.SessaoVotacao;
 import com.rui.api.service.SessaoVotacaoService;
 
 import io.swagger.annotations.ApiOperation;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 @RestController
 @RequestMapping("/cwi/sessao-votacao")
 public class SessaoVotacaoResource {
@@ -24,6 +26,8 @@ public class SessaoVotacaoResource {
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
 	public void criar(@RequestBody SessaoVotacao sessaoVotacao) {
+		log.info("Criando sessao...");
+		
 		this.service.salvar(sessaoVotacao);
 	}
 	
