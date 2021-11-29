@@ -12,7 +12,7 @@
 * Poderia ter feito uso do Flyway para realizar a migração de dados, mas optei por uma abordagem mais simplificada para criação das tabelas e alimentação inicial de dados
 * Não achei necessária a criação de endpoints de busca por ids de Pauta/Associado/Sessao/Voto e, por esse motivo, optei por retornar somente o "HttpStatus Created", sem o endpoint de busca correspondente (Uri)
 * Optei pelo uso de queries naturais para resolver muitas das consultas, pois é o padrão utilizado em meu trabalho atual. JPA Criteria também poderia ter sido utilizada, mas demandaria um pouco mais de tempo
-* Considerei que um Pauta só poderia ter uma Sessao xxx
+* Considerei que um Pauta só poderia ter uma Sessao
 
 ## Script de Banco de Dados
 * Nome da Database: cwi
